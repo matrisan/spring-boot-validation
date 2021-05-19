@@ -32,7 +32,12 @@ class UserInfoControllerTest {
     private static final String username = "test_name";
     private static final int age = 28;
     private static final String email = "spring-boot@qq.com";
-    private static final long birthday = 1718625166000L;
+
+    /**
+     * 2021-05-19 16:22:19 - 1621412539000L
+     * 2033-05-18 11:33:19 - 1999999999999L
+     */
+    private static final long birthday = 1999999999999L;
 
     @Test
     void userInfo1() throws Exception {

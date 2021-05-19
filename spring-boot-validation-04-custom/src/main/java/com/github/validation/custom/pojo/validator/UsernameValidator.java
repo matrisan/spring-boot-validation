@@ -1,8 +1,10 @@
 package com.github.validation.custom.pojo.validator;
 
 import com.github.validation.custom.pojo.constraint.Username;
+import com.github.validation.custom.repository.UserInfoRepository;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
@@ -19,8 +21,13 @@ import javax.validation.ConstraintValidatorContext;
 
 public class UsernameValidator implements ConstraintValidator<Username, String> {
 
+    @Resource
+    private UserInfoRepository repository;
+
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
         return StringUtils.startsWithIgnoreCase(value, "test_");
+//        return StringUtils.startsWithIgnoreCase(value, "test_") && repository.existByUsername(value);
     }
+
 }
