@@ -1,4 +1,6 @@
-自定义注解:
+= 自定义注解
+:sourcedir:spring-boot-validation-04-custom/src/main/java/com/github/validation/custom
+== 自定义注解:
 
 * 自定义注解
 * 自定义该注解的校验逻辑
@@ -6,8 +8,64 @@
 
 
 
+== 自定义注解
+
+[source,java]
+----
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE})
+//指定注解的处理类
+@Constraint(validatedBy = {UsernameValidator.class})
+@ReportAsSingleViolation
+public @interface Username {
 
 
+    String value() default "";
 
+    String message() default "用户 ID 不存在";
 
+    Class<?>[] groups() default {};
 
+    Class<? extends Payload>[] payload() default {};
+
+}
+
+----
+== 自定义该注解的校验逻辑
+
+[source,java]
+----
+public class UsernameValidator implements ConstraintValidator<Username, String> {
+
+//    @Resource
+//    private UserInfoRepository repository;
+
+    @Override
+    public boolean isValid(String value, ConstraintValidatorContext context) {
+        return StringUtils.startsWithIgnoreCase(value, "test_");
+    }
+}
+----
+
+== 标注注解
+
+[source,java]
+----
+@Slf4j
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class UserInfoDTO {
+
+    @Username
+    String username;
+
+    @Min(1) @Max(150)
+    Integer age;
+
+    Date birthday;
+
+}
+----

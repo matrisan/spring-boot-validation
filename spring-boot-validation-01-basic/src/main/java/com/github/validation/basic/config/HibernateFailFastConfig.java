@@ -3,6 +3,7 @@ package com.github.validation.basic.config;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.validation.MessageInterpolatorFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 /**
@@ -15,7 +16,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
  */
 
 @Slf4j
-//@Configuration
+@Configuration
 public class HibernateFailFastConfig {
 
     @Bean
