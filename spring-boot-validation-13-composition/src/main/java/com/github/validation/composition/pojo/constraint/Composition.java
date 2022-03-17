@@ -16,8 +16,6 @@ import java.lang.annotation.Target;
  * 组合注解, 把需要校验的规则统统放到这个注解上面
  * 如 {@link Identity} {@link Passport} {@link Phone},
  * <p>
- * {@link ConstraintComposition} 用来标识这些注解之间的关系,如 OR,AND, ALL_FALSE
- * {@link ReportAsSingleViolation} 用来表示只返回单个 {@link #message()} 提示信息
  * <p>
  * create in 2021/5/14 3:36 下午
  *

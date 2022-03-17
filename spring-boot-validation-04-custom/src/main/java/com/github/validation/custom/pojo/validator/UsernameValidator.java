@@ -26,7 +26,6 @@ public class UsernameValidator implements ConstraintValidator<Username, String> 
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-//        return StringUtils.startsWithIgnoreCase(value, "test_");
         return StringUtils.startsWithIgnoreCase(value, "test_") && repository.existByUsername(value);
     }
 

@@ -29,16 +29,14 @@ import java.util.Map;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserInfoDTO {
 
-    String username;
-
     @Min(1) @Max(150)
     Integer age;
-
-    Date birthday;
-
     @Valid
     UserExtDTO userExt;
 
+    String username;
+
+    Date birthday;
     Map<Integer, @Valid BookInfoDTO> bookMaps;
 
 }
